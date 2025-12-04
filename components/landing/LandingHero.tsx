@@ -98,7 +98,7 @@ export function LandingHero() {
             </p>
 
             {/* Button Group */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap">
               <motion.div
                 whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
                 whileTap={{ scale: 0.95 }}
@@ -107,7 +107,7 @@ export function LandingHero() {
               >
                 <Button
                   size="lg"
-                  className="group text-base px-8 relative overflow-hidden w-full sm:w-auto"
+                  className="group text-base px-6 sm:px-8 relative overflow-hidden"
                   asChild
                 >
                   <Link href="/menu">
@@ -125,7 +125,7 @@ export function LandingHero() {
                   size="lg"
                   variant="outline"
                   onClick={scrollToFlow}
-                  className="text-base px-8 w-full sm:w-auto group"
+                  className="text-base px-6 sm:px-8 group"
                 >
                   <Lightbulb className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
                   Panduan

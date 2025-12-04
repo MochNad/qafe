@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Home, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   const prefersReducedMotion = useReducedMotion();
@@ -30,7 +31,7 @@ export default function NotFound() {
 
       <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
         <motion.div
-          className="text-center"
+          className="text-center px-4 sm:px-6 lg:px-0"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -66,13 +67,17 @@ export default function NotFound() {
           </p>
 
           {/* Button */}
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+          <motion.div
+            whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
+            whileTap={{ scale: 0.95 }}
           >
-            <Home className="w-5 h-5" />
-            Kembali ke Beranda
-          </Link>
+            <Button size="lg" className="gap-2 px-8" asChild>
+              <Link href="/">
+                <Home className="w-5 h-5" />
+                Kembali ke Beranda
+              </Link>
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
     </div>

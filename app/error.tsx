@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Home, RefreshCw, AlertTriangle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Error({
   error,
@@ -41,7 +42,7 @@ export default function Error({
 
       <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
         <motion.div
-          className="text-center"
+          className="text-center px-4 sm:px-6 lg:px-0"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -72,21 +73,33 @@ export default function Error({
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={reset}
-              className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl min-w-[200px]"
+          <div className="flex flex-row gap-3 sm:gap-4 justify-center items-center flex-wrap">
+            <motion.div
+              whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
+              whileTap={{ scale: 0.95 }}
             >
-              <RefreshCw className="w-5 h-5" />
-              Coba Lagi
-            </button>
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl min-w-[200px]"
+              <Button onClick={reset} size="lg" className="gap-2 px-6 sm:px-8">
+                <RefreshCw className="w-5 h-5" />
+                Coba Lagi
+              </Button>
+            </motion.div>
+
+            <motion.div
+              whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
+              whileTap={{ scale: 0.95 }}
             >
-              <Home className="w-5 h-5" />
-              Kembali ke Beranda
-            </Link>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="gap-2 px-6 sm:px-8"
+                asChild
+              >
+                <Link href="/">
+                  <Home className="w-5 h-5" />
+                  Kembali ke Beranda
+                </Link>
+              </Button>
+            </motion.div>
           </div>
 
           {/* Error Digest */}
