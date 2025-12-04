@@ -54,16 +54,20 @@ export function Footer() {
           </p>
 
           {/* GitHub */}
-          <motion.a
-            href="#"
-            aria-label="GitHub"
-            className="w-8 h-8 rounded-full border flex items-center justify-center"
-            whileHover={!prefersReducedMotion ? { scale: 1.15 } : undefined}
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.3 }}
+          <Link
+            href="https://github.com/MochNad/qafe"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Github className="h-4 w-4" />
-          </motion.a>
+            <motion.div
+              className="w-8 h-8 rounded-full border flex items-center justify-center"
+              whileHover={!prefersReducedMotion ? { scale: 1.15 } : undefined}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Github className="h-4 w-4" />
+            </motion.div>
+          </Link>
         </div>
       </div>
     </motion.footer>

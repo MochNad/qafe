@@ -1,8 +1,14 @@
 "use client";
 
-import { ArrowRight, Image as ImageIcon, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Image as ImageIcon,
+  Sparkles,
+  Lightbulb,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 
 export function LandingHero() {
@@ -17,6 +23,13 @@ export function LandingHero() {
 
   // Kurangi partikel drastis
   const particleCount = isMobile ? 0 : 4;
+
+  const scrollToFlow = () => {
+    const flowSection = document.getElementById("cara-kerja");
+    if (flowSection) {
+      flowSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <section
@@ -71,33 +84,54 @@ export function LandingHero() {
           transition={{ duration: 0.5 }}
         >
           {/* Left - Heading */}
-          <div className="space-y-8 text-center lg:text-left">
+          <div className="space-y-8 text-center lg:text-left px-4 sm:px-6 lg:px-0">
             <div>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="inline-block">Pesan</span>{" "}
                 <span className="inline-block">Praktis</span>
                 <span className="block text-primary mt-2">dengan QR Code</span>
               </h1>
             </div>
 
-            <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed">
               Duduk, pindai, pesan, bayar. Sesederhana itu.
             </p>
 
-            <motion.div
-              whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => setIsHovering(true)}
-              onHoverEnd={() => setIsHovering(false)}
-            >
-              <Button
-                size="lg"
-                className="group text-base px-8 relative overflow-hidden"
+            {/* Button Group */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <motion.div
+                whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
+                whileTap={{ scale: 0.95 }}
+                onHoverStart={() => setIsHovering(true)}
+                onHoverEnd={() => setIsHovering(false)}
               >
-                <span className="relative z-10">Mulai</span>
-                <ArrowRight className="ml-2 h-4 w-4 relative z-10" />
-              </Button>
-            </motion.div>
+                <Button
+                  size="lg"
+                  className="group text-base px-8 relative overflow-hidden w-full sm:w-auto"
+                  asChild
+                >
+                  <Link href="/menu">
+                    <span className="relative z-10">Mulai</span>
+                    <ArrowRight className="ml-2 h-4 w-4 relative z-10" />
+                  </Link>
+                </Button>
+              </motion.div>
+
+              <motion.div
+                whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={scrollToFlow}
+                  className="text-base px-8 w-full sm:w-auto group"
+                >
+                  <Lightbulb className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  Panduan
+                </Button>
+              </motion.div>
+            </div>
           </div>
 
           {/* Right - Hero Gallery - simplified */}

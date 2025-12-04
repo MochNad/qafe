@@ -57,11 +57,13 @@ export function LandingFlow() {
     setIsMobile(window.innerWidth < 768);
   }, []);
 
-  // Tidak ada partikel untuk mobile
   const showParticles = !isMobile && !prefersReducedMotion;
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
+    <section
+      id="cara-kerja"
+      className="py-16 md:py-20 lg:py-24 relative overflow-hidden scroll-mt-14"
+    >
       {/* Minimal background grid */}
       {!prefersReducedMotion && (
         <div
